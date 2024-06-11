@@ -12,7 +12,44 @@
     <h1>Create Player page</h1>
     <div class="container">
         <div class="card">
-            <form action="/players/new" method="post"></form>
+            <form action="/players/new" method="post">
+                <label for="first_name">First Name
+                    <input type="text" name="first_name">
+                </label>
+                <label for="last_name">Last Name
+                    <input type="text" name="last_name">
+                </label>
+                <label for="height">Height (in inches)
+                    <input type="number" name="height">
+                </label>
+                <label for="weight">Weight
+                    <input type="number" name="weight">
+                </label>
+                <label for="country">Last Name
+                    <input type="text" name="country">
+                </label>
+                <label for="position">Position
+                    <select name="position" id="position">
+                        <option value="G" selected>G</option>
+                        <option value="F">F</option>
+                        <option value="C">C</option>
+                    </select>
+                </label>
+                <p>Stats per game</p>
+                <label for="points">Points
+                    <input type="number" name="points" value="0.0">
+                </label>
+                <label for="assists">Assists
+                    <input type="number" name="assists" value="0.0">
+                </label>
+                <label for="rebounds">Rebounds
+                    <input type="number" name="rebounds" value="0.0">
+                </label>
+                <label for="blocks">Blocks
+                    <input type="number" name="blocks" value="0.0">
+                </label>
+                <button type="submit">Create</button>
+            </form>
         </div>
     </div>
 </body>

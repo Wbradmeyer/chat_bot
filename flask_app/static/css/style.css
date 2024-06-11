@@ -2,3 +2,8 @@ html {
     background-color: darkblue;
     color: aliceblue;
 }
+
+label {
+    display: block;
+    margin: 10px;
+}
