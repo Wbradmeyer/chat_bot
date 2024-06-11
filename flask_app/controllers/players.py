@@ -19,4 +19,10 @@ def show_all_players():
 @app.route('/players/<int:id>', methods=['GET'])
 def player_card(id):
     this_player = player.Player.get_player_by_id(id)
-    return render_template('one_player.html', player = this_player)
+    height = this_player.height
+    inches = height % 12
+    feet = 0
+    while height > 12:
+        height -= 12
+        feet += 1
+    return render_template('one_player.html', player = this_player, inches = inches, feet = feet)

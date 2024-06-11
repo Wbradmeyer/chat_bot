@@ -10,5 +10,15 @@
 </head>
 <body>
     <h1>Player Card Page</h1>
+    <div class="container">
+        <div class="card">
+            <h2>Name: {{ player.first_name }} {{ player.last_name }}</h2>
+            <p>Position: {{ player.position }} | {{ feet }}'{{ inches }}'', {{ player.weight }} lbs</p>
+            <p>Country: {{ player.country }} | Team: {{ player.team }}</p>
+            <p>Stats: {{ player.points }} ppg | {{ player.assists }} apg | 
+                {{ player.rebounds }} rpg | {{ player.blocks }} bpg
+            </p>
+        </div>
+    </div>
 </body>
 </html>
