@@ -22,13 +22,13 @@ class Player:
 
     @classmethod
     def create_new_player(cls, data):
-        if not cls.validate_player(data):
-            return False
+        # if not cls.validate_player(data):
+        #     return False
         query = """
         INSERT INTO players (first_name, last_name, height, weight,
-                    country, team, points, assists, rebounds, blocks)
+                    country, position, team, points, assists, rebounds, blocks)
         VALUES (%(first_name)s, %(last_name)s, %(height)s, %(weight)s,
-                    %(country)s, %(team)s, %(points)s, %(assists)s, %(rebounds)s, %(blocks)s)
+                    %(country)s, %(position)s, %(team)s, %(points)s, %(assists)s, %(rebounds)s, %(blocks)s)
         ;"""
         player_id = connectToMySQL(cls.db).query_db(query, data)
         return player_id

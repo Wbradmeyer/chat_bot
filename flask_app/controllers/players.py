@@ -8,7 +8,7 @@ def create_player():
         # create a new instrument and retrieve the id
         player_id = player.Player.create_new_player(request.form)
         if player_id:
-            return redirect('/home')
+            return redirect('/players/all')
     return render_template('create_player.html', data = request.form)
 
 @app.route('/players/all', methods=['GET'])
