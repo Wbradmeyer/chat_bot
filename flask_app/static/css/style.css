@@ -3,6 +3,17 @@ html {
     color: aliceblue;
 }
 
+.container {
+    margin: auto;
+    width: 600px;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
 label {
     display: block;
     margin: 15px;

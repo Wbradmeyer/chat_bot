@@ -9,8 +9,12 @@
     <title>Player Card</title>
 </head>
 <body>
-    <h1>Player Card Page</h1>
     <div class="container">
+        <h1>Player Card Page</h1>
+        <div class="nav">
+            <a href="/">Title</a>
+            <a href="/players/all">All Players</a>
+        </div>
         <div class="card">
             <h2>Name: {{ player.first_name }} {{ player.last_name }}</h2>
             <p>Position: {{ player.position }} | {{ feet }}'{{ inches }}'', {{ player.weight }} lbs</p>
