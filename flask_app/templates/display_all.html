@@ -22,6 +22,7 @@
                     <th>Last Name</th>
                     <th>Position</th>
                     <th>Team</th>
+                    <th>Action</th>
                 </thead>
                 <tbody>
                     {% for player in players %}
@@ -30,6 +31,7 @@
                         <td>{{ player.last_name }}</td>
                         <td>{{ player.position }}</td>
                         <td>{{ player.team }}</td>
+                        <td><a href="/players/{{ player.id }}">View Player</a></td>
                     </tr>
                     {% endfor %}
                 </tbody>
