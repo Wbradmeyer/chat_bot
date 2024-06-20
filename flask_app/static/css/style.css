@@ -21,6 +21,16 @@ html {
     padding: 15px;
 }
 
+#popup {
+    position: absolute;
+    border: 1px solid black;
+    border-radius: 15pt;
+    background-color: indianred;
+    color: white;
+    padding: 20px;
+    z-index: 1;
+}
+
 label {
     display: block;
     margin: 15px;

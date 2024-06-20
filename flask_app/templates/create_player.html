@@ -15,6 +15,16 @@
             <a href="/players/all">All Players</a>
         </div>
         <div class="card">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <div id="popup">
+                        {% for message in messages %}
+                            <p>{{ message }}</p>
+                        {% endfor %}
+                        <button onclick="popup.remove()" class="btn btn-warning">Okay</button>
+                    </div>
+                {% endif %}
+            {% endwith %}
             <form action="/players/new" method="post">
                 <label for="first_name">First Name
                     <input type="text" name="first_name">

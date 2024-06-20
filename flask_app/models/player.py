@@ -22,8 +22,8 @@ class Player:
 
     @classmethod
     def create_new_player(cls, data):
-        # if not cls.validate_player(data):
-        #     return False
+        if not cls.validate_player(data):
+            return False
         query = """
         INSERT INTO players (first_name, last_name, height, weight,
                     country, position, team, points, assists, rebounds, blocks)
@@ -56,3 +56,16 @@ class Player:
                 this_player = cls(row)
                 all_players.append(this_player)
         return all_players
+    
+    @staticmethod
+    def validate_player(data):
+        is_valid = True
+
+        if len(data['first_name']) < 2:
+            flash('First name should be at least 2 characters.')
+            is_valid = False
+        if len(data['last_name']) < 2:
+            flash('Last name should be at least 2 characters.')
+            is_valid = False
+
+        return is_valid
