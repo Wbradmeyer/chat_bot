@@ -64,8 +64,20 @@ class Player:
         if len(data['first_name']) < 2:
             flash('First name should be at least 2 characters.')
             is_valid = False
+        if data['height'] < 1:
+            flash('Height must be at least 1 inch.')
+            is_valid = False
+        if data['weight'] < 1:
+            flash('Weight must be at least 1 lb.')
+            is_valid = False
         if len(data['last_name']) < 2:
             flash('Last name should be at least 2 characters.')
+            is_valid = False
+        if len(data['country']) < 2:
+            flash('Country should be at least 2 characters.')
+            is_valid = False
+        if len(data['team']) < 2:
+            flash('Team should be at least 2 characters.')
             is_valid = False
 
         return is_valid
