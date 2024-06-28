@@ -40,11 +40,11 @@
         <!-- chatbot at bottom of page -->
         <div class="chatbot">
             <form class="user_request">
-                <input type="text" value="Ask me something">
+                <input type="text" value="Ask me something" onchange="displayUserText(event)">
                 <button type="submit">Ask</button>
             </form>
             <hr>
-            <div>Body</div>
+            <div id="body">Hello</div>
         </div>
     </div>
 </body>
