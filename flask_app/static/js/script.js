@@ -1,3 +1,5 @@
 const displayUserText = (e) =>{
-    body.innerText = e.target.value
+    e.preventDefault()
+    let bodyText = user_input.value
+    body.innerText = bodyText
 }
