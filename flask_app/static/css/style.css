@@ -48,7 +48,7 @@ th, td {
     padding: 5px 20px 5px 5px;
 }
 
-a {
+a, button {
     color: aliceblue;
     text-decoration: none;
     border: 1px solid gray;
@@ -58,9 +58,20 @@ a {
 }
 
 .chatbot {
-    max-width: 175px;
+    max-width: 225px;
     background-color:rgb(51, 51, 222);
     border: 2px solid black;
     border-radius: 5px;
     text-align: center;
+}
+
+input {
+    border: 1px solid gray;
+    padding: 3px;
+    border-radius: 5px;
+}
+
+.user_request {
+    display: flex;
+    justify-content: space-around;
 }
