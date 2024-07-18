@@ -57,6 +57,16 @@ class Player:
                 all_players.append(this_player)
         return all_players
     
+    def get_players_from_bot(cls, query):
+        query = query
+        results = connectToMySQL(cls.db).query_db(query)
+        sorted_players = []
+        if results:
+            for row in results:
+                this_player = cls(row)
+                sorted_players.append(this_player)
+        return sorted_players
+    
     @staticmethod
     def validate_player(data):
         is_valid = True
