@@ -26,3 +26,6 @@ def player_card(id):
         height -= 12
         feet += 1
     return render_template('one_player.html', player = this_player, inches = inches, feet = feet)
+
+# create a route from the chatbot that sends input to API
+# convert it to mySQL query in a python string format
