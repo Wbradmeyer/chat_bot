@@ -28,14 +28,15 @@ def player_card(id):
 
 # create a route from the chatbot that sends input to API
     # form takes text, sends to external chatbot
-    # chatbot returns a SQL query
+    # chatbot returns a SQL query in python string format
     # function passes the SQL query to the model and selects data to send back
+        # session text or variable to display?
 @app.route('/players/chat_query', methods=['POST', 'GET'])
 def handle_chat():
     if request.method == 'POST':
         text = request.form['user_input']
+        # text passed to chatbot, store returned query
+        # pass query to model and store returned data
         redirect('/players/chat_query')
     all_players = player.Player.get_all_players()
     return render_template('display_all.html', players = all_players, text=text)
-
-# convert it to mySQL query in a python string format
