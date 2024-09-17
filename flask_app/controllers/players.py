@@ -5,7 +5,6 @@ from flask_app.models import player
 @app.route('/players/new', methods=['POST', 'GET'])
 def create_player():
     if request.method == 'POST':
-        # create a new instrument and retrieve the id
         player_id = player.Player.create_new_player(request.form)
         if player_id:
             return redirect('/players/all')
@@ -28,4 +27,15 @@ def player_card(id):
     return render_template('one_player.html', player = this_player, inches = inches, feet = feet)
 
 # create a route from the chatbot that sends input to API
+    # form takes text, sends to external chatbot
+    # chatbot returns a SQL query
+    # function passes the SQL query to the model and selects data to send back
+@app.route('/players/chat_query', methods=['POST', 'GET'])
+def handle_chat():
+    if request.method == 'POST':
+        text = request.form['user_input']
+        redirect('/players/chat_query')
+    all_players = player.Player.get_all_players()
+    return render_template('display_all.html', players = all_players, text=text)
+
 # convert it to mySQL query in a python string format

@@ -39,12 +39,13 @@
         </div>
         <!-- chatbot at bottom of page -->
         <div class="chatbot">
-            <form class="user_request">
-                <input type="text" value="Ask me something" onchange="displayUserText(event)" id="user_input">
+            <form class="user_request" action="/players/chat_query" method="post">
+                <!-- <input type="text" placeholder="Ask me something" onchange="displayUserText(event)" id="user_input"> -->
+                <input type="text" placeholder="Ask me something" id="user_input" name="user_input">
                 <button type="submit">Ask</button>
             </form>
             <hr>
-            <div id="body">Hello</div>
+            <div id="body">{{ text }}</div>
         </div>
     </div>
 </body>
