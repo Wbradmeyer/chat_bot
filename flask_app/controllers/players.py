@@ -1,6 +1,7 @@
 from flask_app import app
 from flask import render_template, redirect, request, session
 from flask_app.models import player
+import requests
 
 @app.route('/players/new', methods=['POST', 'GET'])
 def create_player():
@@ -19,11 +20,7 @@ def show_all_players():
 def player_card(id):
     this_player = player.Player.get_player_by_id(id)
     height = this_player.height
-    inches = height % 12
-    feet = 0
-    while height > 12:
-        height -= 12
-        feet += 1
+    feet, inches = divmod(height, 12)
     return render_template('one_player.html', player = this_player, inches = inches, feet = feet)
 
 # create a route from the chatbot that sends input to API
@@ -36,7 +33,13 @@ def handle_chat():
     if request.method == 'POST':
         text = request.form['user_input']
         # text passed to chatbot, store returned query
+        chatbot_response = requests.post('http://api', json={'input': text})
+        query = chatbot_response.json().get('query')
         # pass query to model and store returned data
-        redirect('/players/chat_query')
-    all_players = player.Player.get_all_players()
-    return render_template('display_all.html', players = all_players, text=text)
+        if query:
+            try:
+                query_result = player.Player.get_players_from_bot(query)
+                return render_template('display_all.html', players=query_result, text="I hope this is what you were asking for.")
+            except Exception as e:
+                return render_template('display_all.html', error="Query execution failed.", text=text)
+    return render_template('display_all.html', players = [], text="Enter a query")
