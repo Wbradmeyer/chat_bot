@@ -1,7 +1,7 @@
 from flask_app import app
 from flask import render_template, redirect, request, session
 from flask_app.models import player
-import requests
+# import requests
 
 @app.route('/players/new', methods=['POST', 'GET'])
 def create_player():
@@ -33,8 +33,8 @@ def handle_chat():
     if request.method == 'POST':
         text = request.form['user_input']
         # text passed to chatbot, store returned query
-        chatbot_response = requests.post('http://api', json={'input': text})
-        query = chatbot_response.json().get('query')
+        # chatbot_response = requests.post('http://api', json={'input': text})
+        # query = chatbot_response.json().get('query')
         # pass query to model and store returned data
         if query:
             try:

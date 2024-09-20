@@ -9,10 +9,22 @@
     <title>Home</title>
 </head>
 <body>
-    <h1>Player Maker Home Page</h1>
-    <div class="nav">
-        <a href="/players/new">Create a Player</a>
-        <a href="/players/all">All Players</a>
+    <div class="container">
+        <h1>Player Maker Home Page</h1>
+        <div class="nav">
+            <a href="/players/new">Create a Player</a>
+            <a href="/players/all">All Players</a>
+        </div>
+        <h2>Player Finder</h2>
+        <div class="chatbot">
+            <form class="user_request" action="/players/chat_query" method="post">
+                <!-- <input type="text" placeholder="Ask me something" onchange="displayUserText(event)" id="user_input"> -->
+                <input type="text" placeholder="Ask me something" id="user_input" name="user_input">
+                <button type="submit">Ask</button>
+            </form>
+            <hr>
+            <div id="body">{{ text }}</div>
+        </div>
     </div>
 </body>
 </html>
