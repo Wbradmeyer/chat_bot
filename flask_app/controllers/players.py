@@ -43,3 +43,5 @@ def handle_chat():
             except Exception as e:
                 return render_template('display_all.html', error="Query execution failed.", text=text)
     return render_template('display_all.html', players = [], text="Enter a query")
+
+# Will I need to program the bot on the host side or do I need to send a prompt from here?
