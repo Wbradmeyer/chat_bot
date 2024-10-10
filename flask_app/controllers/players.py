@@ -1,6 +1,7 @@
 from flask_app import app
 from flask import render_template, redirect, request, session
 from flask_app.models import player
+import openai
 # import requests
 
 @app.route('/players/new', methods=['POST', 'GET'])
@@ -34,6 +35,12 @@ def handle_chat():
         text = request.form['user_input']
         # text passed to chatbot, store returned query
         # chatbot_response = requests.post('http://api', json={'input': text})
+        chat_response = openai.ChatCompletion.create(
+            model='gpt-3.5-turbo',
+            messages=[{'role': 'user', 'content': text}]
+        )
+
+        query = chat_response.choices[0].message.content.strip()
         # query = chatbot_response.json().get('query')
         # pass query to model and store returned data
         if query:
