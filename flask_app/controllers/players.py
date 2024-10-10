@@ -24,31 +24,38 @@ def player_card(id):
     feet, inches = divmod(height, 12)
     return render_template('one_player.html', player = this_player, inches = inches, feet = feet)
 
-# create a route from the chatbot that sends input to API
-    # form takes text, sends to external chatbot
     # chatbot returns a SQL query in python string format
     # function passes the SQL query to the model and selects data to send back
-        # session text or variable to display?
+
 @app.route('/players/chat_query', methods=['POST', 'GET'])
 def handle_chat():
     if request.method == 'POST':
         text = request.form['user_input']
-        # text passed to chatbot, store returned query
-        # chatbot_response = requests.post('http://api', json={'input': text})
+
         chat_response = openai.ChatCompletion.create(
-            model='gpt-3.5-turbo',
-            messages=[{'role': 'user', 'content': text}]
+            model='gpt-4o-mini',
+            messages=[
+                {'role': 'system', 'content': 
+                    """
+                        I'd like you to output SQL queries that I can use on my database. 
+                        I have a MySQL schema with a table called players that includes the following columns: 
+                        id(INT), first_name(VARCHAR), last_name(VARCHAR), height(INT), weight(INT), country(VARCHAR),
+                        position(VARCHAR), team(VARCHAR), points(FLOAT), assists(FLOAT), rebounds(FLOAT), blocks(FLOAT),
+                        created_at(DATETIME), updated_at(DATETIME). 
+                        Please only answer with SQL queries in a Python string format.
+                    """},
+                {'role': 'user', 'content': text}]
         )
 
-        query = chat_response.choices[0].message.content.strip()
-        # query = chatbot_response.json().get('query')
+        query = chat_response.choices[0].message.content
+        print(query)
         # pass query to model and store returned data
-        if query:
-            try:
-                query_result = player.Player.get_players_from_bot(query)
-                return render_template('display_all.html', players=query_result, text="I hope this is what you were asking for.")
-            except Exception as e:
-                return render_template('display_all.html', error="Query execution failed.", text=text)
-    return render_template('display_all.html', players = [], text="Enter a query")
+        # if query:
+        #     try:
+        #         query_result = player.Player.get_players_from_bot(query)
+        #         return render_template('display_all.html', players=query_result, text="I hope this is what you were asking for.")
+        #     except Exception as e:
+        #         return render_template('display_all.html', error="Query execution failed.", text=text)
+    return render_template('display_all.html', players = [], text=query)
 
 # Will I need to program the bot on the host side or do I need to send a prompt from here?
