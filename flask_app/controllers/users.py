@@ -11,23 +11,6 @@ import openai
 
 @app.route('/')
 def index():
-    # text = """
-    #     I'd like you to output SQL queries that I can use on my database. 
-    #     I have a MySQL schema with a table called players that includes the following columns: 
-    #     id(INT), first_name(VARCHAR), last_name(VARCHAR), height(INT), weight(INT), country(VARCHAR),
-    #     position(VARCHAR), team(VARCHAR), points(FLOAT), assists(FLOAT), rebounds(FLOAT), blocks(FLOAT),
-    #     created_at(DATETIME), updated_at(DATETIME). 
-    #     Please only answer with SQL queries in a Python string format. 
-    #     Could I get a list of all the players in the database?
-    # """
-
-    # chat_response = openai.ChatCompletion.create(
-    #     model='gpt-3.5-turbo',
-    #     messages=[{'role': 'user', 'content': text}]
-    # )
-
-    # query = chat_response.choices[0].message.content.strip()
-    # print(query)
     return render_template('index.html')
 
 
