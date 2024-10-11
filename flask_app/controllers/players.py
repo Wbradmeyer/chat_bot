@@ -32,6 +32,8 @@ def handle_chat():
     if request.method == 'POST':
         text = request.form['user_input']
 
+        print(text)
+
         chat_response = openai.chat.completions.create(
             model='gpt-3.5-turbo',
             messages=[
