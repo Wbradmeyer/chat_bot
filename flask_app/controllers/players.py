@@ -32,7 +32,7 @@ def handle_chat():
     if request.method == 'POST':
         text = request.form['user_input']
 
-        chat_response = openai.ChatCompletion.create(
+        chat_response = openai.chat.completions.create(
             model='gpt-4o-mini',
             messages=[
                 {'role': 'system', 'content': 
