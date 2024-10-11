@@ -33,7 +33,7 @@ def handle_chat():
         text = request.form['user_input']
 
         chat_response = openai.chat.completions.create(
-            model='gpt-4o-mini',
+            model='gpt-3.5-turbo',
             messages=[
                 {'role': 'system', 'content': 
                     """
@@ -47,7 +47,7 @@ def handle_chat():
                 {'role': 'user', 'content': text}]
         )
 
-        query = chat_response.choices[0].message.content
+        query = chat_response['choices'][0]['message']['content']
         print(query)
         # pass query to model and store returned data
         # if query:
@@ -57,5 +57,3 @@ def handle_chat():
         #     except Exception as e:
         #         return render_template('display_all.html', error="Query execution failed.", text=text)
     return render_template('display_all.html', players = [], text=query)
-
-# Will I need to program the bot on the host side or do I need to send a prompt from here?
