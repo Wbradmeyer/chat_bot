@@ -37,15 +37,16 @@ def handle_chat():
         chat_response = openai.chat.completions.create(
             model='gpt-3.5-turbo',
             messages=[
-                {'role': 'system', 'content': 
-                    """
-                        I'd like you to output SQL queries that I can use on my database. 
-                        I have a MySQL schema with a table called players that includes the following columns: 
-                        id(INT), first_name(VARCHAR), last_name(VARCHAR), height(INT), weight(INT), country(VARCHAR),
-                        position(VARCHAR), team(VARCHAR), points(FLOAT), assists(FLOAT), rebounds(FLOAT), blocks(FLOAT),
-                        created_at(DATETIME), updated_at(DATETIME). 
-                        Please only answer with SQL queries in a Python string format.
-                    """},
+                {'role': 'system', 'content': 'You are a helpful assistant.'
+                    # """
+                    #     I'd like you to output SQL queries that I can use on my database. 
+                    #     I have a MySQL schema with a table called players that includes the following columns: 
+                    #     id(INT), first_name(VARCHAR), last_name(VARCHAR), height(INT), weight(INT), country(VARCHAR),
+                    #     position(VARCHAR), team(VARCHAR), points(FLOAT), assists(FLOAT), rebounds(FLOAT), blocks(FLOAT),
+                    #     created_at(DATETIME), updated_at(DATETIME). 
+                    #     Please only answer with SQL queries in a Python string format.
+                    # """
+                },
                 {'role': 'user', 'content': text}]
         )
 
