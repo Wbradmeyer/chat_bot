@@ -36,6 +36,7 @@ def handle_chat():
         chat_response = openai.chat.completions.create(
             model='gpt-3.5-turbo',
             messages=[
+                # test content to try and ping ChatGPT
                 {'role': 'system', 'content': 'You are a helpful assistant.'
                     # """
                     #     I'd like you to output SQL queries that I can use on my database. 
