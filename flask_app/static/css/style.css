@@ -62,7 +62,8 @@ a, button {
 .chatbot {
     max-width: 250px;
     background-color:rgb(26, 26, 96);
-    border: 2px solid black;
+    border: 1px dashed gray;
+    box-shadow: 0px 0px 15px 3px rgb(6, 6, 113);
     border-radius: 5px;
     text-align: center;
     padding: 10px;
