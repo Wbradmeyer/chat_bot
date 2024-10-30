@@ -29,6 +29,7 @@ def player_card(id):
 @app.route('/players/chat_query', methods=['POST', 'GET'])
 def handle_chat():
     if request.method == 'POST':
+        print('condition met')
         text = request.form['user_input']
 
         print(text)
@@ -50,6 +51,7 @@ def handle_chat():
                 {'role': 'user', 'content': text}]
         )
 
+        print(chat_response)
         query = chat_response['choices'][0]['message']['content']
         print(query)
         # pass query to model and store returned data
