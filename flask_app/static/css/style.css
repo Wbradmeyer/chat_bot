@@ -8,6 +8,10 @@ html {
     width: 600px;
 }
 
+h1 {
+    font-size: 28pt;
+}
+
 .nav {
     display: flex;
     justify-content: space-evenly;
